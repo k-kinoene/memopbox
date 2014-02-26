@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MemopBox</title>
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.css">
+    <link rel="stylesheet" href="css/mb.css">
+    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="//code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js"></script>
+    <script src="//www.dropbox.com/static/api/dropbox-datastores-1.0-latest.js"></script>
+    <script src="js/mb.init.js"></script>
+    <script src="js/mb.auth.js"></script>
+    <script src="js/mb.datastore.js"></script>
+    <script src="js/mb.util.js"></script>
+    <script src="js/mb.ng.model.js"></script>
+    <script src="js/mb.ng.controller.js"></script>
+    <script>
+      memopBox.Controller.init();
+    </script>
+  </head>
+  <body ng-app="memopBox" ng-controller="mainCtrl">
+    <div data-role="page">
+      <header data-role="header" class="mb-header" data-theme="b">
+        <h1>MemopBox</h1>
+        <a href="#mb-panel" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-bars ui-btn-left mb-navi-list">List</a>
+        <a href="#mb-account" data-rel="popup" data-transition="fade" class="ui-btn ui-btn-icon-notext ui-shadow ui-corner-all ui-icon-user ui-btn-right">Account</a>
+        <p class="mb-message">{{header.message}}</p>
+      </header>
+      <div class="mb-wrapper">
+        <article role="main" class="ui-content mb-content">
+          <section>
+            <input type="hidden" value="{{main.id}}"/>
+            <label for="title">Title：</label>
+            <input id="title" ng-model="main.title"/>
+            <label for="content">Content：</label>
+            <textarea id="mb-content-txt" ng-model="main.content"></textarea>
+            <label for="mb-file-chk" class="mb-label-inline">Put a file after saving</label>
+            <input data-mini="true" id="mb-file-chk" type="checkbox" ng-model="main.puttable">
+            <div class="mb-save-area">
+              <input ng-click="main.save()" type="button" data-theme="k" data-icon="check" value="Save"/>
+            </div>
+            <div class="mb-del-area" >
+              <input ng-click="main.del()" id="mb-del-btn" disabled type ="button" data-theme="k" data-icon="delete" value="Delete"/>
+            </div>
+          </section>
+        </article>
+        <aside>
+          <section data-role="panel" data-display="overlay" id="mb-panel" class="mb-panel">
+            <label for="list">Memo list：</label>
+            <ul id="list" data-role="listview" data-filter="true" data-filter-placeholder="Search title...">
+              <li ng-repeat="memo in memos" data-icon="{{memo.icon}}">
+                <a ng-click="memo.select()" class="mb-list {{memo.selectedClass}}" href="#" >
+                  <p class="ui-li-aside mb-list-aside {{memo.selectedClass}}">{{memo.date | date:"yyyy/MM/dd HH:mm"}}</p>
+                  {{memo.title}}
+                </a>
+              </li>
+            </ul>
+          </section>
+          <section data-role="popup" data-overlay-theme="a" id="mb-account">
+            <h4>{{accountInfo.name}}</h4>
+            <p>{{accountInfo.email}}</p>
+            <p>{{accountInfo.quotaRatio}}</p>
+          </section>
+        </aside>
+      </div>
+      <footer data-role="footer" class="mb-footer" data-theme="b">
+        <p>&copy;{{footer.year}}&nbsp;<a href="//twitter.com/{{footer.author}}">@{{footer.author}}</a></p>
+      </footer>
+    </div>
+  </body>
+</html>

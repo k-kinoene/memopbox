@@ -1,0 +1,96 @@
+text-area{
+  height: 6em;
+}
+
+.ui-btn-k{
+  padding: 1.2em;
+}
+
+.mb-message{
+  text-align: center;
+  color: #444;
+  font-size: 0.8em;
+  font-weight: normal;
+  margin: 0;
+  text-shadow: none;
+  background-color: #eee; 
+  padding: 4px;
+  border-bottom: 1px solid #ccc;
+}
+
+.mb-label-inline{
+  display: inline-block!important;
+}
+
+.mb-save-area{
+  margin-top: 30px;
+}
+
+.mb-wrapper{
+  overflow: hidden;
+}
+
+.mb-header{
+  z-index: 1;
+  border-bottom: 0;
+}
+
+.mb-footer{
+  clear: both;
+  z-index: 1;
+}
+
+.mb-footer p{
+  text-align: right;
+  font-size: 12px;
+  padding: 0 5px;
+}
+
+.mb-list{
+  padding: 1em 2.5em 1em 1em;
+}
+.mb-list-selected{
+  background-color: #444 !important;
+  color: white !important;
+  text-shadow: none !important;
+}
+
+.mb-list-aside{
+  top: 0.2em !important;
+}
+
+@media (min-width: 721px) {
+  .mb-navi-list{
+    display: none !important;
+  }
+
+  .mb-content {
+    width: 70%;
+    padding-left: 2%;
+    padding-right: 2%;
+    float: right;
+  }
+
+  .mb-panel {
+    border-right-width: 1px;
+    border-right-style: dashed;
+    border-right-color: #ddd;
+    z-index: 0;
+    padding-bottom: 32768px;
+    margin-bottom: -32768px;
+    visibility: visible;
+    position: relative;
+    float: left;
+    width: 25%;
+    background: none !important;
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    transition: none !important;
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    transform: none !important;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+}
